@@ -216,6 +216,10 @@ echo "   TextEncode: GPU"
 echo "   Steps: 6 | CFG: 1.0 | sdpa"
 echo "   LoRA: Lightx2v | GrowMask: suave"
 echo "   FPS: auto-detecta do vídeo"
+echo "mkdir -p /workspace/videos_salvos"
+echo ""
+echo "   LoRA: Lightx2v | GrowMask: suave"
+echo "   FPS: auto-detecta do vídeo"
 echo ""
 echo " Dividir vídeo: ffmpeg -i input.mp4 \\"
 echo "   -c copy -segment_time 3 -f segment \\"
@@ -223,4 +227,7 @@ echo "   -reset_timestamps 1 parte_%03d.mp4"
 echo "=========================================="
 echo ""
 
-python main.py --listen 0.0.0.0 --port 8188
+# O comando mkdir precisa estar solto (fora do echo) para ser executado
+mkdir -p /workspace/videos_salvos
+
+python main.py --listen 0.0.0.0 --port 8188 --output-directory /workspace/videos_salvos
